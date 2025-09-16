@@ -9,7 +9,7 @@ const username = process.argv[2];
 
 // 2. ตรวจสอบว่าผู้ใช้ได้ใส่ username มาหรือไม่
 
-if (!username){
+if (!username) {
     console.error('Please enter a username');
     console.log('Example: node index.js octocat');
     process.exit(1); // ออกจากโปรแกรมด้วยสถานะ 1 (แสดงว่ามีข้อผิดพลาด)
@@ -18,13 +18,13 @@ if (!username){
 
 
 // 3. ฟังก์ชันสำหรับดึงข้อมูลกิจกรรมของผู้ใช้จาก GitHub API
-async function fetchActivity(username){
+async function fetchActivity(username) {
     const url = `https://api.github.com/users/${username}/events`;
 
     try {
         const response = await fetch(url);
 
-        if (!response.ok){
+        if (!response.ok) {
             if (response.status === 404) {
                 throw new Error(`User ${username} not found`);
             }
@@ -33,14 +33,14 @@ async function fetchActivity(username){
 
         const events = await response.json();
         return events;
-    }catch(error){
+    } catch (error) {
         console.error(error);
         return null;
     }
 }
 
 // 4. แสดงผลข้อมูลกิจกรรม
-function displayActivity(events){
+function displayActivity(events) {
     // กรองเอาเฉพาะ 15 กิจกรรมล่าสุด
 
     events.slice(0, 15).forEach((event) => {
@@ -80,7 +80,7 @@ function displayActivity(events){
                 break;
         }
 
-        if (message){
+        if (message) {
             console.log(message)
         }
     })
@@ -96,7 +96,7 @@ async function main() {
         console.log(`✅ ดึงข้อมูลกิจกรรมสำเร็จ! กิจกรรมล่าสุดของ ${username}:`);
 
         displayActivity(events);
-    }else if (events){
+    } else if (events) {
         console.log(`\n🤷 ไม่พบกิจกรรมล่าสุดสำหรับผู้ใช้ ${username}`);
     }
 
