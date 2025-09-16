@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 2rem auto; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; }
+        form div { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.25rem; }
+        input, select, button { width: 100%; padding: 0.5rem; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+<h1>Unit Converter</h1>
+<nav>
+    <a href="/length">Length</a> |
+    <a href="/weight">Weight</a> |
+    <a href="/temperature"><b>Temperature</b></a>
+</nav>
+<hr>
+
+<% if (result) { %>
+    <h2>Result of your calculation</h2>
+    <h3><%= originalValue %>° <%= fromUnit.charAt(0).toUpperCase() %> = <%= result %>° <%= toUnit.charAt(0).toUpperCase() %></h3>
+    <form action="/temperature" method="get">
+        <button type="submit">Reset</button>
+    </form>
+<% } else { %>
+    <form action="/temperature" method="post">
+        <div>
+            <label for="value">Enter the temperature to convert</label>
+            <input type="number" name="value" id="value" required step="any">
+        </div>
+        <div>
+            <label for="fromUnit">Unit to convert from</label>
+            <select name="fromUnit" id="fromUnit">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+            </select>
+        </div>
+        <div>
+            <label for="toUnit">Unit to convert to</label>
+            <select name="toUnit" id="toUnit">
+                <option value="celsius">Celsius (°C)</option>
+                <option value="fahrenheit">Fahrenheit (°F)</option>
+                <option value="kelvin">Kelvin (K)</option>
+            </select>
+        </div>
+        <button type="submit">Convert</button>
+    </form>
+<% } %>
+</body>
+</html>

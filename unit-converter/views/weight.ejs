@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter</title>
+    <style>
+        body { font-family: sans-serif; max-width: 500px; margin: 2rem auto; padding: 1rem; border: 1px solid #ccc; border-radius: 8px; }
+        form div { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.25rem; }
+        input, select, button { width: 100%; padding: 0.5rem; box-sizing: border-box; }
+        button { background-color: #007bff; color: white; border: none; cursor: pointer; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+<h1>Unit Converter</h1>
+<nav>
+    <a href="/length">Length</a> |
+    <a href="/weight"><b>Weight</b></a> |
+    <a href="/temperature">Temperature</a>
+</nav>
+<hr>
+
+<% if (result) { %>
+    <h2>Result of your calculation</h2>
+    <h3><%= originalValue %> <%= fromUnit %> = <%= result %> <%= toUnit %></h3>
+    <form action="/weight" method="get">
+        <button type="submit">Reset</button>
+    </form>
+<% } else { %>
+    <form action="/weight" method="post">
+        <div>
+            <label for="value">Enter the weight to convert</label>
+            <input type="number" name="value" id="value" required step="any">
+        </div>
+        <div>
+            <label for="fromUnit">Unit to convert from</label>
+            <select name="fromUnit" id="fromUnit">
+                <option value="gram">Gram (g)</option>
+                <option value="kilogram">Kilogram (kg)</option>
+                <option value="milligram">Milligram (mg)</option>
+                <option value="pound">Pound (lb)</option>
+                <option value="ounce">Ounce (oz)</option>
+            </select>
+        </div>
+        <div>
+            <label for="toUnit">Unit to convert to</label>
+            <select name="toUnit" id="toUnit">
+                <option value="gram">Gram (g)</option>
+                <option value="kilogram">Kilogram (kg)</option>
+                <option value="milligram">Milligram (mg)</option>
+                <option value="pound">Pound (lb)</option>
+                <option value="ounce">Ounce (oz)</option>
+            </select>
+        </div>
+        <button type="submit">Convert</button>
+    </form>
+<% } %>
+</body>
+</html>

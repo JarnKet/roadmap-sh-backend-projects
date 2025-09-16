@@ -8,3 +8,4 @@ In this repo it will have these projects:
 2. GitHub User Activity CLI [Project URL](https://roadmap.sh/projects/github-user-activity)
 3. Expense Tracker CLI [Project URL](https://roadmap.sh/projects/expense-tracker)
 4. Number Guessing Game CLI [Project URL](https://roadmap.sh/projects/number-guessing-game)
+5. Unit Converter Web App [Project URL](https://roadmap.sh/projects/unit-converter)
