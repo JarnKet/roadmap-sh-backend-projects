@@ -4,6 +4,6 @@ Hello, My name is Ketsadaphone BOUTPANYDA, you can call me "Ket". I'm a web fron
 
 In this repo it will have these projects:
 
-1. Task Tracker CLI (https://roadmap.sh/projects/task-tracker)
-2. GitHub User Activity CLI
-3. Expense Tracker CLI
+1. Task Tracker CLI [Project URL](https://roadmap.sh/projects/task-tracker)
+2. GitHub User Activity CLI [Project URL](https://roadmap.sh/projects/github-user-activity)
+3. Expense Tracker CLI [Project URL](https://roadmap.sh/projects/expense-tracker)
