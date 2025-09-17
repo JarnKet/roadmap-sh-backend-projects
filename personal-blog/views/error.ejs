@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="<%= locals.description || 'Something went wrong on our blog' %>"
+        />
+        <title>
+            <%= locals.title ? title + ' - ' + siteName : 'Error - ' + siteName
+            %>
+        </title>
+        <link rel="stylesheet" href="/public/css/styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/home" class="logo"><%= siteName %></a>
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/admin">Admin</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="container">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h1><%= title || 'Error' %></h1>
+                    </div>
+                    <div class="card-content">
+                        <p><%= message || 'An unexpected error occurred.' %></p>
+                        <% if (locals.error && error.stack &&
+                        process.env.NODE_ENV === 'development') { %>
+                        <details style="margin-top: 2rem; text-align: left">
+                            <summary style="cursor: pointer; font-weight: bold">
+                                Error Details (Development Mode)
+                            </summary>
+                            <pre
+                                style="
+                                    background: #f8f9fa;
+                                    padding: 1rem;
+                                    margin-top: 1rem;
+                                    border-radius: 4px;
+                                    overflow-x: auto;
+                                    font-size: 0.875rem;
+                                "
+                            >
+<%= error.stack %></pre
+                            >
+                        </details>
+                        <% } %>
+                    </div>
+                    <div class="card-actions" style="justify-content: center">
+                        <a href="/home" class="btn btn-primary">Go Home</a>
+                        <a
+                            href="javascript:history.back()"
+                            class="btn btn-secondary"
+                            >Go Back</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    &copy; <%= currentYear %> <%= siteName %>. Built with
+                    Node.js and Express.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

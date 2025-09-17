@@ -1,0 +1,32 @@
+{
+  "name": "expense-tracker-cli",
+  "version": "1.0.0",
+  "description": "A powerful command-line tool for tracking personal expenses with CRUD operations and monthly summaries",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "expense-tracker",
+    "cli",
+    "finance",
+    "budget",
+    "nodejs",
+    "command-line",
+    "personal-finance",
+    "expense-management",
+    "crud"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "cli-table3": "^0.6.5",
+    "commander": "^14.0.1",
+    "uuid": "^13.0.0"
+  }
+}

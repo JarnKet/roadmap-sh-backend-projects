@@ -1,0 +1,25 @@
+{
+  "name": "github-user-activity",
+  "version": "1.0.0",
+  "description": "A command-line tool to fetch and display recent GitHub activity for any user",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "cli",
+    "activity",
+    "nodejs",
+    "api",
+    "github-api",
+    "command-line"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
