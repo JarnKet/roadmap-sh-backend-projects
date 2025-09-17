@@ -10,3 +10,4 @@ In this repo it will have these projects:
 4. Number Guessing Game CLI [Project URL](https://roadmap.sh/projects/number-guessing-game)
 5. Unit Converter Web App [Project URL](https://roadmap.sh/projects/unit-converter)
 6. Personal Blog Web App [Project URL](https://roadmap.sh/projects/personal-blog)
+7. Weather API Wrapper Service [Project URL](https://roadmap.sh/projects/weather-api-wrapper-service)
