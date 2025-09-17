@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Create a new blog article" />
+        <title>
+            <%= locals.title || 'Create New Article' %> - <%= siteName %>
+        </title>
+        <link rel="stylesheet" href="/public/css/styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/home" class="logo"><%= siteName %></a>
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/admin">Dashboard</a></li>
+                            <li><a href="/articles/new">New Article</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="container">
+                <!-- Error Messages -->
+                <% if (locals.errors && errors.length > 0) { %>
+                <div class="alert alert-error">
+                    <ul class="error-list">
+                        <% errors.forEach(error => { %>
+                        <li>• <%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% } %>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Create New Article</h1>
+                        <p class="card-meta">
+                            Fill in the details below to publish a new article
+                        </p>
+                    </div>
+
+                    <form action="/articles" method="POST">
+                        <div class="form-group">
+                            <label for="title" class="form-label"
+                                >Article Title *</label
+                            >
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                class="form-input"
+                                required
+                                placeholder="Enter a compelling title for your article"
+                                value="<%= locals.formData && formData.title ? formData.title : '' %>"
+                                maxlength="200"
+                            />
+                            <small class="card-meta"
+                                >Keep it concise and engaging (3-200
+                                characters)</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="publishDate" class="form-label"
+                                >Publish Date *</label
+                            >
+                            <input
+                                type="date"
+                                id="publishDate"
+                                name="publishDate"
+                                class="form-input"
+                                required
+                                value="<%= locals.formData && formData.publishDate ? formData.publishDate : new Date().toISOString().split('T')[0] %>"
+                            />
+                            <small class="card-meta"
+                                >When should this article be published?</small
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content" class="form-label"
+                                >Article Content *</label
+                            >
+                            <textarea
+                                id="content"
+                                name="content"
+                                class="form-textarea"
+                                required
+                                placeholder="Write your article content here. You can use line breaks for paragraphs."
+                                style="min-height: 300px"
+                            >
+<%= locals.formData && formData.content ? formData.content : '' %></textarea
+                            >
+                            <small class="card-meta"
+                                >Minimum 10 characters. Use line breaks to
+                                separate paragraphs.</small
+                            >
+                        </div>
+
+                        <div class="card-actions">
+                            <button type="submit" class="btn btn-success">
+                                📝 Publish Article
+                            </button>
+                            <a href="/admin" class="btn btn-secondary">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Writing Tips -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>💡 Writing Tips</h3>
+                    </div>
+                    <div class="card-content">
+                        <ul style="margin-left: 1.5rem">
+                            <li>
+                                <strong>Title:</strong> Make it clear and
+                                engaging. Ask yourself: "Would I click on this?"
+                            </li>
+                            <li>
+                                <strong>Content:</strong> Break up long
+                                paragraphs with line breaks for better
+                                readability
+                            </li>
+                            <li>
+                                <strong>Structure:</strong> Start with an
+                                introduction, develop your main points, and end
+                                with a conclusion
+                            </li>
+                            <li>
+                                <strong>Length:</strong> Write as much as needed
+                                to fully explore your topic
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    &copy; <%= currentYear %> <%= siteName %>. Built with
+                    Node.js and Express.
+                </p>
+            </div>
+        </footer>
+
+        <!-- Character counter and form enhancements -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const titleInput = document.getElementById("title");
+                const contentTextarea = document.getElementById("content");
+
+                // Title character counter
+                function updateTitleCounter() {
+                    const remaining = 200 - titleInput.value.length;
+                    const counterElement =
+                        titleInput.parentNode.querySelector(".char-counter") ||
+                        Object.assign(document.createElement("small"), {
+                            className: "card-meta char-counter",
+                            style: "display: block; margin-top: 0.25rem;",
+                        });
+
+                    counterElement.textContent = `${titleInput.value.length}/200 characters`;
+                    counterElement.style.color =
+                        remaining < 20 ? "#e74c3c" : "#7f8c8d";
+
+                    if (!titleInput.parentNode.querySelector(".char-counter")) {
+                        titleInput.parentNode.appendChild(counterElement);
+                    }
+                }
+
+                // Content word counter
+                function updateContentCounter() {
+                    const words = contentTextarea.value
+                        .trim()
+                        .split(/\s+/)
+                        .filter((word) => word.length > 0);
+                    const wordCount = words.length;
+                    const charCount = contentTextarea.value.length;
+
+                    const counterElement =
+                        contentTextarea.parentNode.querySelector(
+                            ".content-counter"
+                        ) ||
+                        Object.assign(document.createElement("small"), {
+                            className: "card-meta content-counter",
+                            style: "display: block; margin-top: 0.25rem;",
+                        });
+
+                    counterElement.textContent = `${wordCount} words, ${charCount} characters`;
+
+                    if (
+                        !contentTextarea.parentNode.querySelector(
+                            ".content-counter"
+                        )
+                    ) {
+                        contentTextarea.parentNode.appendChild(counterElement);
+                    }
+                }
+
+                titleInput.addEventListener("input", updateTitleCounter);
+                contentTextarea.addEventListener("input", updateContentCounter);
+
+                // Initialize counters
+                updateTitleCounter();
+                updateContentCounter();
+            });
+        </script>
+    </body>
+</html>

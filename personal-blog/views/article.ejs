@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="<%= article ? article.content.substring(0, 160) : 'Read this article on our personal blog' %>"
+        />
+        <title>
+            <%= article ? article.title + ' - ' + siteName : 'Article - ' +
+            siteName %>
+        </title>
+        <link rel="stylesheet" href="/public/css/styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <a href="/home" class="logo"><%= siteName %></a>
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="/home">Home</a></li>
+                            <% if (locals.isAdmin) { %>
+                            <li><a href="/admin">Dashboard</a></li>
+                            <li><a href="/articles/new">New Article</a></li>
+                            <% } else { %>
+                            <li><a href="/admin">Admin</a></li>
+                            <% } %>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="container">
+                <% if (article) { %>
+                <article class="card">
+                    <header class="card-header">
+                        <h1 class="card-title"><%= article.title %></h1>
+                        <div class="card-meta">
+                            Published on <%= new
+                            Date(article.publishDate).toLocaleDateString('en-US',
+                            { year: 'numeric', month: 'long', day: 'numeric' })
+                            %> <% if (article.updatedAt && article.updatedAt !==
+                            article.createdAt) { %> • Updated <%= new
+                            Date(article.updatedAt).toLocaleDateString('en-US',
+                            { year: 'numeric', month: 'long', day: 'numeric' })
+                            %> <% } %>
+                        </div>
+                    </header>
+
+                    <div class="card-content">
+                        <div style="white-space: pre-wrap; line-height: 1.8">
+                            <%= article.content %>
+                        </div>
+                    </div>
+
+                    <footer class="card-actions">
+                        <a href="/home" class="btn btn-secondary"
+                            >← Back to Articles</a
+                        >
+                        <% if (locals.isAdmin) { %>
+                        <a
+                            href="/articles/<%= article.id %>/edit"
+                            class="btn btn-warning"
+                            >Edit Article</a
+                        >
+                        <% } %>
+                    </footer>
+                </article>
+                <% } else { %>
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h1>Article Not Found</h1>
+                    </div>
+                    <div class="card-content">
+                        <p>
+                            Sorry, the article you're looking for doesn't exist
+                            or has been removed.
+                        </p>
+                    </div>
+                    <div class="card-actions" style="justify-content: center">
+                        <a href="/home" class="btn btn-primary"
+                            >Browse Articles</a
+                        >
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    &copy; <%= currentYear %> <%= siteName %>. Built with
+                    Node.js and Express.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>
