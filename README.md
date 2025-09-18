@@ -13,3 +13,4 @@ In this repo it will have these projects:
 7. Weather API [Project URL](https://roadmap.sh/projects/weather-api-wrapper-service)
 8. Blogging Platform API [Project URL](https://roadmap.sh/projects/blogging-platform-api)
 9. Todo List API [Project URL](https://roadmap.sh/projects/todo-list-api)
+10. Expense Tracker API [Project URL](https://roadmap.sh/projects/expense-tracker-api)
