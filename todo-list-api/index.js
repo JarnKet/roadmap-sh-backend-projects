@@ -29,9 +29,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/v1/test-token", authorize, (req, res) => {
     res.status(200).json({
-        message: "Token is valid",
-        success: true,
-        user: req.user
+        message: "Token is valid", success: true, user: req.user
     });
 })
 

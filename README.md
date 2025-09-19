@@ -19,3 +19,4 @@ In this repo it will have these projects:
 11. TMDB CLI Tool [Project URL](https://roadmap.sh/projects/tmdb-cli)
 
 ## Intermediate Level Projects
+1. Caching Proxy [Project URL](https://roadmap.sh/projects/caching-server)
