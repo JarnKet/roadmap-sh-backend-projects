@@ -21,4 +21,4 @@ In this repo it will have these projects:
 ## Intermediate Level Projects
 1. Caching Proxy [Project URL](https://roadmap.sh/projects/caching-server)
 2. Markdown Note-Taking App [Project URL](https://roadmap.sh/projects/markdown-note-taking-app)
-3.
+3. URL Shortening Service [Project URL](https://roadmap.sh/projects/url-shortening-service)
