@@ -24,4 +24,4 @@ In this repo it will have these projects:
 4. Broadcast Server [Project URL](https://roadmap.sh/projects/broadcast-server)
 5. Ecommerce API [Project URL](https://roadmap.sh/projects/ecommerce-api)
 6. Fitness Workout Tracker API [Project URL](https://roadmap.sh/projects/fitness-workout-tracker)
-
+7. Image Processing Service [Project URL](https://roadmap.sh/projects/image-processing-service)

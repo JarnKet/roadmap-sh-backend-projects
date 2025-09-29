@@ -1,0 +1,31 @@
+const {config} = require('dotenv');
+
+config({
+    path: '.env'
+});
+
+const {
+    PORT,
+    DB_URI,
+    JWT_SECRET,
+    JWT_EXPIRES_IN,
+    CLOUDFLARE_ACCOUNT_ID,
+    CLOUDFLARE_ACCESS_KEY_ID,
+    CLOUDFLARE_SECRET_ACCESS_KEY,
+    CLOUDFLARE_S3_CLIENT,
+    CLOUDFLARE_BUCKET_NAME,
+    CLOUDFLARE_PUBLIC_URL
+} = process.env;
+
+module.exports = {
+    PORT,
+    DB_URI,
+    JWT_SECRET,
+    JWT_EXPIRES_IN,
+    CLOUDFLARE_ACCOUNT_ID,
+    CLOUDFLARE_ACCESS_KEY_ID,
+    CLOUDFLARE_SECRET_ACCESS_KEY,
+    CLOUDFLARE_S3_CLIENT,
+    CLOUDFLARE_BUCKET_NAME,
+    CLOUDFLARE_PUBLIC_URL
+}
